@@ -1,2 +1,49 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Logo</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="#" (click)="setView('home')">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="setView('course')">Course</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="setView('books')">Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="setView('practice-test')">Practice Test</a>
+      </li>
+    </ul>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-info" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+    <button class="btn btn-outline-light ms-3" (click)="toggleSidebar()">
+      <i class="fas fa-user-circle"></i>
+    </button>
+  </div>
+</nav>
 
-<router-outlet />
+<!-- Sidebar -->
+<div class="sidebar" [ngClass]="{'active': sidebarOpen}">
+  <ul>
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Reset Password</a></li>
+    <li><a href="#">Logout</a></li>
+  </ul>
+</div>
+
+<!-- Content -->
+<div class="container mt-5">
+  <ng-container *ngIf="view === 'home'"> <h2>Home Component</h2> </ng-container>
+  <ng-container *ngIf="view === 'course'"> <h2>Course Component</h2> </ng-container>
+  <ng-container *ngIf="view === 'books'"> <h2>Books Component</h2> </ng-container>
+  <ng-container *ngIf="view === 'practice-test'"> <h2>Practice Test Component</h2> </ng-container>
+</div>
